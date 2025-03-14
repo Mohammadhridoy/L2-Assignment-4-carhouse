@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronRight, type LucideIcon } from "lucide-react"
+import { type LucideIcon } from "lucide-react"
 
 import {
   Collapsible,
@@ -32,7 +32,7 @@ export function NavMain({
   return (
     
     <SidebarGroup>
-      <SidebarGroupLabel className="text-xl text-black py-4">Manu</SidebarGroupLabel>
+      <SidebarGroupLabel className="text-xl text-black py-4 ">{`Admin Dashboard`}</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
           <Collapsible
@@ -41,13 +41,15 @@ export function NavMain({
             defaultOpen={item.isActive}
             className="group/collapsible"
           >
-            <SidebarMenuItem >
+            <SidebarMenuItem className="mt-5" >
               <CollapsibleTrigger asChild>
 
-               <NavLink to={item.url}><SidebarMenuButton  tooltip={item.title}>
+               <NavLink to={item.url}><SidebarMenuButton 
+               className="md:py-4 md:text-[14px] lg:text-[17px] font-semibold font-sans shadow-sm hover:text-red-500 hover:translate-y-1 transition-all "
+               tooltip={item.title}>
                   {item.icon && <item.icon />}
-                  <span>{item.title}</span>
-                  <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                  <span >{item.title}</span>
+  
                 </SidebarMenuButton> </NavLink> 
  
               </CollapsibleTrigger>

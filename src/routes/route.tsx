@@ -1,5 +1,8 @@
 import Mainlayout from "@/component/Mainlayout";
 import UserLayout from "@/component/UserLayout";
+import Orders from "@/pages/admin/Orders";
+import Products from "@/pages/admin/Products";
+import Users from "@/pages/admin/Users";
 import Login from "@/pages/Auth/Login/Login";
 import Register from "@/pages/Auth/Register/Register";
 
@@ -68,7 +71,20 @@ const router = createBrowserRouter([
             {
                 path:"/dashboard/vieworder",
                 element:<ViewOrder></ViewOrder>
+            },
+            {
+                path:"/dashboard/admin/users",
+                element:<Users></Users>
+            },
+            {
+                path:"/dashboard/admin/products",
+                element:<Products></Products>
+            },
+            {
+                path:"/dashboard/admin/orders",
+                element:<Orders></Orders>
             }
+            
         ]
     }
     

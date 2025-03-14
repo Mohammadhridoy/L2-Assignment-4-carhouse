@@ -37,7 +37,7 @@ const data = {
         },
         {
           title: "View Orders ",
-          url: "/dashboard/vieworder",
+          url: "/dashboard/user/vieworder",
           icon:  View,
           isActive: false,
         },
@@ -45,21 +45,27 @@ const data = {
       ],
       admin: [ 
         {
-          title: "Users",
+          title: "My profile",
           url: "/dashboard",
+          icon: UserRoundPen,
+          isActive: false,
+        },
+        {
+          title: "Users",
+          url: "/dashboard/admin/users",
           icon: UserRound,
           isActive: true,
         },
         {
           title: "Products",
-          url: "/dashboard/vieworder",
+          url: "/dashboard/admin/products",
           icon:  Car,
           isActive: true,
         },
         {
           title: "Orders",
-          url: "/dashboard/vieworder",
-          icon:    CalendarArrowDown,
+          url: "/dashboard/admin/orders",
+          icon: CalendarArrowDown,
           isActive: true,
         },
 
@@ -88,7 +94,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <Sidebar className="" collapsible="icon" {...props}>
 
         <SidebarContent className="mt-20" >
-          <NavMain items={data.navMain.user } />
+          <NavMain items={data.navMain.admin } />
          
         </SidebarContent>
 
