@@ -1,0 +1,78 @@
+import Mainlayout from "@/component/Mainlayout";
+import UserLayout from "@/component/UserLayout";
+import Login from "@/pages/Auth/Login/Login";
+import Register from "@/pages/Auth/Register/Register";
+
+
+import About from "@/pages/default/About";
+import Allproducts from "@/pages/default/Allproducts/Allproducts";
+
+import ChecKout from "@/pages/default/ChecKout";
+import Home from "@/pages/default/Home";
+import Productsdetails from "@/pages/default/Productsdetails";
+import UserProfile from "@/pages/users/UserProfile";
+import ViewOrder from "@/pages/users/ViewOrder/ViewOrder";
+import { createBrowserRouter } from "react-router-dom";
+
+
+
+
+
+
+const router = createBrowserRouter([
+    {
+        path:"/",
+        element: <Mainlayout></Mainlayout>,
+        children:[
+            {
+                index:true,
+                element: <Home></Home>
+                
+            } ,
+            {
+                path:"all-products",
+                element:<Allproducts></Allproducts>
+
+            },
+            {
+                path:"products-details",
+                element:<Productsdetails></Productsdetails>
+            },
+            {
+                path:"about",
+                element: <About></About>
+            },
+            {
+                path:"checkout",
+                element:<ChecKout></ChecKout>
+            }
+        ]
+    },
+    {
+        path:"/login",
+        element:<Login></Login>
+    },
+    {
+        path:"/register",
+        element:<Register></Register>
+    },
+    {
+        path:"/dashboard",
+        element:<UserLayout></UserLayout>,
+        children:[
+            {
+                index:true,
+                element:<UserProfile></UserProfile>
+
+            },
+            {
+                path:"/dashboard/vieworder",
+                element:<ViewOrder></ViewOrder>
+            }
+        ]
+    }
+    
+])
+
+
+export default router
