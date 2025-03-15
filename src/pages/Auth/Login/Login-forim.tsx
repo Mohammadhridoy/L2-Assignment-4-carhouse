@@ -18,10 +18,12 @@ export function LoginForm({
   }
   
 const [login, {data, error}] = useLoginMutation()
+  console.log(data);
   const { register, handleSubmit } = useForm<IFormInput>()
   const onSubmit: SubmitHandler<IFormInput> = (data) =>{
     login(data)
     console.log(error);
+    console.log(data);
   }
 
 
