@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label"
 import { Link } from "react-router-dom"
 import carImages5 from "../../../assets/carImages5.jpg"
 import { useForm, SubmitHandler } from "react-hook-form"
+import { useLoginMutation } from "@/redux/Api/authApi"
 
 export function LoginForm({
   className,
@@ -16,9 +17,12 @@ export function LoginForm({
     password: string
   }
   
-
+const [login, {data, error}] = useLoginMutation()
   const { register, handleSubmit } = useForm<IFormInput>()
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
+  const onSubmit: SubmitHandler<IFormInput> = (data) =>{
+    login(data)
+    console.log(error);
+  }
 
 
   return (
