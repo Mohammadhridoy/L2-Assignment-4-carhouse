@@ -3,10 +3,13 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import carImages5 from "../../../assets/carImages5.jpg"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { useLoginMutation } from "@/redux/Api/authApi"
+import { useAppDispatch } from "@/redux/hooks"
+import { setUser } from "@/redux/Features/auth/authSlice"
+import { verifyToken } from "@/Utils/VerifyToken"
 
 export function LoginForm({
   className,
@@ -17,13 +20,29 @@ export function LoginForm({
     password: string
   }
   
-const [login, {data, error}] = useLoginMutation()
-  console.log(data);
-  const { register, handleSubmit } = useForm<IFormInput>()
-  const onSubmit: SubmitHandler<IFormInput> = (data) =>{
-    login(data)
-    console.log(error);
-    console.log(data);
+  const navigate = useNavigate()
+
+  const dispatch = useAppDispatch()
+const [login, {error}] = useLoginMutation()
+  const { register, handleSubmit } = useForm<IFormInput>(
+    {
+      defaultValues:{
+        "email":"hrd@gmail.com",
+        "password":"1255ee3"
+    }
+    }
+  )
+  const onSubmit: SubmitHandler<IFormInput> = async (data) =>{
+    const res = await login(data).unwrap()
+    console.log(res);
+
+    const user = verifyToken(res.data.accessToken)
+   
+
+    dispatch(setUser({user: user, token: res.data.accessToken}))
+
+    navigate("/dashboard")
+
   }
 
 

@@ -1,12 +1,13 @@
 import Dashboard from "@/pages/Dashboard/Dashboard";
 import Header from "./Header";
+import ProtectedRoute from "@/Utils/ProtectedRoute";
 
 
 const UserLayout = () => {
     return (
         <div>
             <Header></Header>
-            <Dashboard></Dashboard>
+           <ProtectedRoute>  <Dashboard></Dashboard>  </ProtectedRoute> 
             
         </div>
     );
