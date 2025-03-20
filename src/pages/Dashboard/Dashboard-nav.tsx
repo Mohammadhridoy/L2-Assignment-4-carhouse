@@ -14,6 +14,8 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import { NavLink } from "react-router-dom"
+import { useAppSelector } from "@/redux/hooks"
+import { uesCurrentUser } from "@/redux/Features/auth/authSlice"
 
 
 
@@ -29,10 +31,13 @@ export function NavMain({
 }) 
 {
   
+    const user = useAppSelector(uesCurrentUser)
+
+
   return (
     
     <SidebarGroup>
-      <SidebarGroupLabel className="text-xl text-black py-4 ">{`Admin Dashboard`}</SidebarGroupLabel>
+      <SidebarGroupLabel className="text-xl uppercase text-black py-4 ">{`${user?.role} Dashboard`}</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
           <Collapsible

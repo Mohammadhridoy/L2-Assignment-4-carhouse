@@ -16,7 +16,9 @@ import {
   SidebarFooter,
   SidebarRail,
 } from "@/components/ui/sidebar"
-// import { useState } from "react"
+import { useAppSelector } from "@/redux/hooks"
+import { uesCurrentUser } from "@/redux/Features/auth/authSlice"
+
 
 
 
@@ -74,28 +76,23 @@ const data = {
 
 
   }
-  
-
-
-
 
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
-//   const user= "user"
-// const [dataUser, setUser] = useState(user)
 
-// if(user){
-//   setUser(data.navMain.user)
-
-// }
+  const user = useAppSelector(uesCurrentUser)
 
     return (
       <Sidebar className="" collapsible="icon" {...props}>
 
         <SidebarContent className="mt-20" >
-          <NavMain items={data.navMain.admin } />
-         
+
+          {
+            user?.role =="admin"? <NavMain items={data.navMain.admin} /> 
+            :<NavMain items={data.navMain.user} />
+
+          }
         </SidebarContent>
 
 

@@ -10,8 +10,14 @@ import {
   NavigationMenuList,
   
 } from "@/components/ui/navigation-menu"
+import { useAppSelector } from "@/redux/hooks";
+import { uesCurrentUser } from "@/redux/Features/auth/authSlice";
 
 const Header = () => {
+
+  const user = useAppSelector(uesCurrentUser)
+
+
     return (
     <div className=" bg-[#f6f6f9]  mx-auto z-10  lg:py-4 md:sticky top-0   px-6 md:px-8 lg:px-12 lg:w-full lg:flex">
         <div className=" w-1/3 "> 
@@ -33,10 +39,14 @@ const Header = () => {
         <Link to="/about" className="px-4 py-2 bg-white text-center rounded-lg mr-2 hover:bg-[#f75d34] ease-in-out duration-300 hover:text-white" > About </Link>
         </NavigationMenuItem>
 
+
+        {
+          user ? <NavigationMenuItem >
+          <Link to="/dashboard" className="px-4 py-2 bg-white text-center rounded-lg mr-2 hover:bg-[#f75d34] ease-in-out duration-300 hover:text-white" > dashboard </Link>
+          </NavigationMenuItem> : " "
+        }
         
-        <NavigationMenuItem >
-        <Link to="/dashboard" className="px-4 py-2 bg-white text-center rounded-lg mr-2 hover:bg-[#f75d34] ease-in-out duration-300 hover:text-white" > dashboard </Link>
-        </NavigationMenuItem>
+      
         
       </NavigationMenuList>
     </NavigationMenu>

@@ -69,7 +69,7 @@ const router = createBrowserRouter([
 
             },
             {
-                path:"/dashboard/vieworder",
+                path:"/dashboard/user/vieworder",
                 element:<ViewOrder></ViewOrder>
             },
             {

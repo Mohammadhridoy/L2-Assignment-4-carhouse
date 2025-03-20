@@ -5,11 +5,14 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Link, useNavigate } from "react-router-dom"
 import carImages5 from "../../../assets/carImages5.jpg"
-import { useForm, SubmitHandler } from "react-hook-form"
+import { useForm, SubmitHandler, FieldValues } from "react-hook-form"
 import { useLoginMutation } from "@/redux/Api/authApi"
 import { useAppDispatch } from "@/redux/hooks"
-import { setUser } from "@/redux/Features/auth/authSlice"
+import { setUser, TUser } from "@/redux/Features/auth/authSlice"
 import { verifyToken } from "@/Utils/VerifyToken"
+import { toast } from 'sonner';
+
+
 
 export function LoginForm({
   className,
@@ -23,7 +26,8 @@ export function LoginForm({
   const navigate = useNavigate()
 
   const dispatch = useAppDispatch()
-const [login, {error}] = useLoginMutation()
+const [login ] = useLoginMutation()
+
   const { register, handleSubmit } = useForm<IFormInput>(
     {
       defaultValues:{
@@ -32,18 +36,30 @@ const [login, {error}] = useLoginMutation()
     }
     }
   )
-  const onSubmit: SubmitHandler<IFormInput> = async (data) =>{
-    const res = await login(data).unwrap()
-    console.log(res);
 
-    const user = verifyToken(res.data.accessToken)
-   
 
-    dispatch(setUser({user: user, token: res.data.accessToken}))
 
-    navigate("/dashboard")
+  const onSubmit: SubmitHandler<IFormInput> = async (data: FieldValues) =>{
+    const toastId =  toast.loading('Logging in')
+
+    try{
+      const res = await login(data).unwrap()
+  
+      const user = verifyToken(res.data.accessToken) as TUser
+     
+  
+      dispatch(setUser({user: user, token: res.data.accessToken}))
+  
+      navigate("/dashboard")
+      toast.success('User login successfully', {id: toastId, duration:2000})
+    }catch(err){
+      toast.error(`Something went wrong ${err}`, {id: toastId, duration:2000})
+
+    }
 
   }
+
+  
 
 
   return (
@@ -81,6 +97,7 @@ const [login, {error}] = useLoginMutation()
                 </div>
                 <Input id="password" type="password" required {...register("password")}  />
               </div>
+              
               <Button type="submit" className="w-full bg-[#f75d34] ">
                 Login
               </Button>
