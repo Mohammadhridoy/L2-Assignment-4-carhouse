@@ -12,12 +12,14 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 
+
 // This is sample data.
 const data = {
   navMain: [
 
     {
-      title:"Budget",
+      title:"budget",
+      title1:"Budget",
       items:[
         {
             title: "5 - 10 Lakh"
@@ -39,7 +41,8 @@ const data = {
 
     // brand
     {
-      title:"Brand",
+      title:"brand",
+      title1:"Brand",
       items:[
         {
           title: "Tata"
@@ -61,20 +64,21 @@ const data = {
     
     // Model
     {
-      title:"Model",
+      title:"model",
+      title1:"Model",
       items:[
         {
-          title: "Honda Civic"
+          title: "Civic"
 
         },
         {
-          title:"Toyota Camry"
+          title:"Camry"
         },
         {
-          title:"Toyota Corolla"
+          title:"Corolla"
         },
         {
-          title:"Toyota Tundra"
+          title:"Tundra"
         }
 
       ]
@@ -82,7 +86,8 @@ const data = {
     },
     // category
     {
-      title:"Category",
+      title:"category",
+      title1:"Category",
       items:[
         {
           title: "Luxury"
@@ -106,6 +111,9 @@ const data = {
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+
+ 
+
   return (
     <Sidebar className="z-0 sticky  md:w-48 lg:w-full" {...props}>
       {/* header siderbar */}
