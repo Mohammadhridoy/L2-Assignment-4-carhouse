@@ -8,9 +8,23 @@ import {
 } from "@/components/ui/sidebar"
 
 
-function Allproducts() {
+import { useGetAlldata } from "@/redux/Features/AllCars/getAllCarSlice"
+import { useAppSelector } from "@/redux/hooks"
 
-  
+
+
+
+function Allproducts() {
+   
+const {data, isFetching, isLoading} = useAppSelector(useGetAlldata)
+console.log("get", data, isFetching,  isLoading);
+
+
+
+
+
+
+
 
   return (
     <SidebarProvider>
@@ -21,8 +35,9 @@ function Allproducts() {
           <Separator orientation="vertical" className="mr-2 h-4 md:hidden" />
           <Input type="text" className=" lg: w-2/5" placeholder="search brand, car name, or category" /> 
         </header>
+      
         <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
+          <div  className="grid auto-rows-min gap-4 md:grid-cols-3">
               dddd
           </div>
           {/* <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" /> */}

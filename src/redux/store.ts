@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import authReducer from "./Features/auth/authSlice"
+import getAlldataReducer from"./Features/AllCars/getAllCarSlice"
 import { baseApi } from './Api/baseApi'
 import { persistStore, persistReducer,
     FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER  } from 'redux-persist'
@@ -16,7 +17,9 @@ const persistedAuthReducer = persistReducer(persistConfig, authReducer)
 export const store = configureStore({
   reducer: {
     [baseApi.reducerPath] : baseApi.reducer,
-    auth:persistedAuthReducer 
+    auth:persistedAuthReducer ,
+
+    getAlldata:getAlldataReducer
  
   },
 

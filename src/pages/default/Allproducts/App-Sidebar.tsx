@@ -18,21 +18,20 @@ const data = {
   navMain: [
 
     {
-      title:"budget",
+      title:"price",
       title1:"Budget",
       items:[
         {
-            title: "5 - 10 Lakh"
-
+            title: "700000 - 200000"
         },
         {
-          title:"10 - 15 Lakh"
+          title:"210000 - 350000"
         },
         {
-          title:"15 - 20 Lakh"
+          title:"360000 - 600000"
         },
         {
-          title:"20 Lakh Above"
+          title:"610000 - 10000000"
         }
 
       ]

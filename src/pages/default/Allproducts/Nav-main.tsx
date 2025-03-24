@@ -4,13 +4,10 @@ import {
   SidebarGroup,
   SidebarMenu,
 } from "@/components/ui/sidebar"
-import { useGetAllCarsQuery } from "@/redux/Features/AllCars/GetAllCars"
-import { useState } from "react"
+import useFetchData from "@/Utils/fetchData"
 
 
-
-
-
+import {  useState } from "react"
 
 
 
@@ -26,19 +23,20 @@ export function NavMain({
   }[]
 }) {
 
+
   const [filters, setFilters ] = useState<Record<string, string[]>>({})
 
   const queryParams = Object.entries(filters).map(([key, values])=>
       values.map((value)=>({name:key, value}))
   ).flat()
 
+ 
 
-  const {data} = useGetAllCarsQuery({arg: queryParams} )
+   useFetchData(queryParams)
+  
 
-console.log("nav",data);
 
 
-console.log( 'ddd', queryParams);
 
 
 const handleSelect = (category:string, value:string) =>{
@@ -63,8 +61,10 @@ const handleSelect = (category:string, value:string) =>{
 
 }
 
-
   return (
+
+
+
     <SidebarGroup>
       <SidebarMenu>
         {items.map((section) => (

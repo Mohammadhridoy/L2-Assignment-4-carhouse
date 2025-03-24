@@ -21,7 +21,7 @@ export type TError ={
 }
 
 export type TResponse<T> ={
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     
     data?: T;
     error?:TError
     successs:boolean;
@@ -33,6 +33,6 @@ export type TResponse<T> ={
 export type TResponseRedux<T> = TResponse<T> & BaseQueryApi
 
 export type Titem ={
-    name?:string,
-    value?:string
+    name:string,
+    value: string | React.Key
 }[]

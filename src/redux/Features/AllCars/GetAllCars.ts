@@ -1,4 +1,5 @@
 import { baseApi } from "@/redux/Api/baseApi";
+import { Titem } from "@/Utils/types";
 
 ;
 
@@ -12,10 +13,10 @@ const getAllCarsapi = baseApi.injectEndpoints({
                 const params = new URLSearchParams()
                 if(args){
                     
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    args?.arg?.forEach((item:any)=>
+                   
+                    args?.arg?.forEach((item:Titem)=>
                        {
-                        params.append( item?.name, item?.value)
+                        params.append( item?.name, item?.value as string)
                        }
                     )
                     
