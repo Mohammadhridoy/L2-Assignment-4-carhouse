@@ -1,6 +1,8 @@
 import { BaseQueryApi } from "@reduxjs/toolkit/query"
+import { JSX } from "react/jsx-runtime"
 
-export type Car ={
+export type TCar ={
+    map(arg0: (carInfo: TCar) => JSX.Element): import("react").ReactNode
     brand: string,
     model: string,
     year:number, 
@@ -8,7 +10,10 @@ export type Car ={
     category: "Sedan" | "SUV" | "Truck" | "Coupe" | "Convertible",
     description: string,
     quantity:number,
-    inStock: boolean, 
+    inStock: boolean,
+    image:string,
+    carName:string,
+    _id?:string|undefined
 
 }
 
@@ -36,3 +41,10 @@ export type Titem ={
     name:string,
     value: string | React.Key
 }[]
+
+
+export type data = {
+    data:TCar
+}
+
+

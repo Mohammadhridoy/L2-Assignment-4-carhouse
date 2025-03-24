@@ -1,12 +1,12 @@
 
 import { RootState } from "@/redux/store";
-import { Car } from "@/Utils/types";
+import {  data } from "@/Utils/types";
 import { createSlice } from "@reduxjs/toolkit";
 
 
 
 type TgetCarData = {
-    data:Car| null,
+    data:data| null,
     isFetching:boolean | null, 
     isLoading:boolean | null, 
     isError:string | null
