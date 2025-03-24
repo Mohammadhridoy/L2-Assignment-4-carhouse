@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/sidebar"
 
 
+
 // This is sample data.
 const data = {
   navMain: [
@@ -55,6 +56,9 @@ const data = {
         },
         {
           title:"Maruti"
+        },
+        {
+          title:"Tesla"
         }
 
       ]
@@ -74,10 +78,13 @@ const data = {
           title:"Camry"
         },
         {
-          title:"Corolla"
+          title:"Seltos"
         },
         {
-          title:"Tundra"
+          title:"Swift"
+        },
+        {
+          title:"Corvette"
         }
 
       ]
@@ -100,6 +107,9 @@ const data = {
         },
         {
           title:"Coupe"
+        },
+        {
+          title:"Electric"
         }
 
       ]
