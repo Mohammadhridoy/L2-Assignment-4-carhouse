@@ -22,7 +22,7 @@ const Cardinfo:React.FC<Tprops> = ({data}) => {
 
 
 
-  console.log("single",data);
+ 
 
     return (
            <Card>
@@ -51,7 +51,7 @@ const Cardinfo:React.FC<Tprops> = ({data}) => {
                  </div>
                 </CardContent>
                 <CardFooter>
-              <Link className="w-full " to="/productsdetails">
+              <Link className="w-full " to="/productsdetails" state={data._id}>
                <Button className= "md:w-full bg-[#f75d34]" >View Details</Button> </Link>
                 </CardFooter>
             </Card>

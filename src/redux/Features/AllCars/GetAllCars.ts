@@ -31,9 +31,18 @@ const getAllCarsapi = baseApi.injectEndpoints({
          }
 
         }),
+        getSingleData: builder.query({
+            query: (args) =>({
+                url: `/cars/${args}`,
+                method:'GET',
+            })
+        }),
+
+
+
      })
 })
 
 
 
-export const {useGetAllCarsQuery}= getAllCarsapi
+export const {useGetAllCarsQuery, useGetSingleDataQuery}= getAllCarsapi

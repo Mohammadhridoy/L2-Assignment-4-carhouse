@@ -42,7 +42,7 @@ const Header = () => {
 
         {
           user ? <NavigationMenuItem >
-          <Link to="/dashboard" className="px-4 py-2 bg-white text-center rounded-lg mr-2 hover:bg-[#f75d34] ease-in-out duration-300 hover:text-white" > dashboard </Link>
+          <Link to="/dashboard" className="px-4 py-2 bg-white text-center rounded-lg mr-2 hover:bg-[#f75d34] ease-in-out duration-300 hover:text-white" > Dashboard </Link>
           </NavigationMenuItem> : " "
         }
         
