@@ -10,11 +10,12 @@ import Register from "@/pages/Auth/Register/Register";
 import About from "@/pages/default/About";
 import Allproducts from "@/pages/default/Allproducts/Allproducts";
 
-import ChecKout from "@/pages/default/ChecKout";
+import ChecKout from "@/pages/default/Checkout/ChecKout";
 import Home from "@/pages/default/Home";
 import Productsdetails from "@/pages/default/Productsdetails";
 import UserProfile from "@/pages/users/UserProfile";
 import ViewOrder from "@/pages/users/ViewOrder/ViewOrder";
+import ProtectedRoute from "@/Utils/ProtectedRoute";
 import { createBrowserRouter } from "react-router-dom";
 
 
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
             },
             {
                 path:"checkout",
-                element:<ChecKout></ChecKout>
+                element:<ProtectedRoute> <ChecKout></ChecKout></ProtectedRoute>
             },
             
         ]

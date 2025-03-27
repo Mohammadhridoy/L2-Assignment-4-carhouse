@@ -69,8 +69,12 @@ const Productsdetails = () => {
 
                     {/* Quantity */}
                     <div className="py-5 mt-10">
-                    <Link className="w-full " to="/productsdetails">
-                    <Button className= "md:w-full bg-[#f75d34]" >Buy Now</Button> </Link>
+                        {
+                            dataStore?.inStock == true?<Link className="w-full " to="/checkout">
+                    <Button className= "md:w-full bg-[#f75d34]" >Buy Now</Button> </Link>:
+                     <Button disabled className= "md:w-full bg-[#f75d34]" >Out Of Stock</Button>
+                        }
+                    
                     </div>
 
                 </div>
