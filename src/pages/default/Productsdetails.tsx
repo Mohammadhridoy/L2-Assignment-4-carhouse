@@ -8,8 +8,11 @@ const Productsdetails = () => {
    
 
     const {data} = useGetSingleDataQuery(state)
+
     
     const dataStore = data?.data
+
+
 
     return (
         <div className="flex  justify-between align-middle p-14">
@@ -70,8 +73,8 @@ const Productsdetails = () => {
                     {/* Quantity */}
                     <div className="py-5 mt-10">
                         {
-                            dataStore?.inStock == true?<Link className="w-full " to="/checkout">
-                    <Button className= "md:w-full bg-[#f75d34]" >Buy Now</Button> </Link>:
+                            dataStore?.inStock == true?<Link className="w-full " to="/checkout" state={dataStore?._id} >
+                    <Button  className= "md:w-full bg-[#f75d34]" >Buy Now</Button> </Link>:
                      <Button disabled className= "md:w-full bg-[#f75d34]" >Out Of Stock</Button>
                         }
                     

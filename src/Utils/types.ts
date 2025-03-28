@@ -47,4 +47,9 @@ export type data = {
     data:TCar
 }
 
+export type  TpropUser = {
+    name: string,
+    email: string
+}
+
 
