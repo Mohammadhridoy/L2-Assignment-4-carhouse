@@ -1,5 +1,8 @@
   import { Button } from "@/components/ui/button"
 import { useGetSingleDataQuery } from "@/redux/Features/AllCars/GetAllCars";
+import { setSingleData } from "@/redux/Features/AllCars/getAllCarSlice";
+import { useAppDispatch } from "@/redux/hooks";
+import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const Productsdetails = () => {
@@ -11,6 +14,14 @@ const Productsdetails = () => {
 
     
     const dataStore = data?.data
+
+    const dispatch = useAppDispatch()
+
+    useEffect(()=>{
+        dispatch(setSingleData({dataStore}))
+    },[dispatch, dataStore])
+
+    
 
 
 

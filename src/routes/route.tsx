@@ -11,6 +11,7 @@ import About from "@/pages/default/About";
 import Allproducts from "@/pages/default/Allproducts/Allproducts";
 
 import ChecKout from "@/pages/default/Checkout/ChecKout";
+import OrderVerify from "@/pages/default/Checkout/OrderVerify";
 import Home from "@/pages/default/Home";
 import Productsdetails from "@/pages/default/Productsdetails";
 import UserProfile from "@/pages/users/UserProfile";
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
                 path:"checkout",
                 element:<ProtectedRoute> <ChecKout></ChecKout></ProtectedRoute>
             },
+            {
+                path:"/orders/verify",
+                element:<ProtectedRoute><OrderVerify></OrderVerify></ProtectedRoute>
+            }
             
         ]
     },

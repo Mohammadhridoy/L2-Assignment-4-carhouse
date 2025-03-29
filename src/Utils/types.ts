@@ -52,4 +52,31 @@ export type  TpropUser = {
     email: string
 }
 
+export type TproductDetail = {
+        carName: string,
+        model: string,
+        brand: string,
+        year: number,
+}
+
+ export   type dataStore = {
+        brand: string,
+        model: string,
+        year:number, 
+        price:number,
+        category: "Sedan" | "SUV" | "Truck" | "Coupe" | "Convertible",
+        description: string,
+        quantity:number,
+        inStock: boolean,
+        image:string,
+        carName:string,
+        _id?:string|undefined
+    }
+
+export type TSingleCar ={
+    dataStore: dataStore,
+    
+
+}
+
 

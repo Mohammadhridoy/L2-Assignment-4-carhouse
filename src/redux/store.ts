@@ -6,20 +6,22 @@ import { persistStore, persistReducer,
     FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER  } from 'redux-persist'
 import storage from 'redux-persist/lib/storage' 
 
+
 const persistConfig = {
   key: 'auth',
+  id:'singledata',
   storage,
 }
 
 const persistedAuthReducer = persistReducer(persistConfig, authReducer)
-
+const persistedSingleData = persistReducer(persistConfig, getAlldataReducer)
 
 export const store = configureStore({
   reducer: {
     [baseApi.reducerPath] : baseApi.reducer,
     auth:persistedAuthReducer ,
 
-    getAlldata:getAlldataReducer
+    getAlldata:persistedSingleData
  
   },
 

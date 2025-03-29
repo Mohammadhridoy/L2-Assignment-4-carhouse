@@ -1,25 +1,38 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CheckoutDetailsCard1 from "./CheckoutDetailsCard1";
 import { Button } from "@/components/ui/button"
 import UserDetailsCard from "./UserDetailsCard";
-import { useState } from "react";
-
-import { useGetSingleDataQuery } from "@/redux/Features/AllCars/GetAllCars";
+import {  useEffect, useState } from "react";
+import { useSetOrderMutation } from "@/redux/Api/orderApi";
+import { useAppSelector } from "@/redux/hooks";
+import { uesCurrentUser } from "@/redux/Features/auth/authSlice";
+import { useSingledata } from "@/redux/Features/AllCars/getAllCarSlice";
+import { dataStore, } from "@/Utils/types";
+import { toast } from "sonner";
 
 
 
 
 const ChecKout = () => {
 
+  
 
 
-     const {state} = useLocation()
-     
-       
+    const singleData = useAppSelector(useSingledata)
 
-    const {data} = useGetSingleDataQuery(state)
-    console.log(data?.data?.price);
-   const unitPrice = data?.data?.price 
+    const carinfo = singleData?.dataStore as dataStore
+    
+
+    const unitPrice = singleData?.dataStore?.price  
+    const  productDetail  = {
+    carName: carinfo?.carName,
+    model: carinfo?.model,
+    brand: carinfo?.brand,
+    year: carinfo?.year,
+    }
+   
+    
+
 
 
 
@@ -32,8 +45,6 @@ const ChecKout = () => {
           const totalPrice = unitPrice*sumQuantity
           setQuantity(sumQuantity)
           setTotalPrice(totalPrice)
-
-
   
       }
      
@@ -47,6 +58,42 @@ const ChecKout = () => {
           }
       }
 
+    //   place order
+    const user = useAppSelector(uesCurrentUser)
+    const [setOrder, {isLoading, isSuccess, data, isError, error}] = useSetOrderMutation()
+    const handleOrder = async () =>{
+
+       const orderinfo =  {
+             email: user?.email ,
+             carId: carinfo?._id,
+            quantity:quantity,
+            totalPrice:totalprice
+        }
+        await setOrder(orderinfo)
+
+    }
+    
+    const toastId = 1
+    useEffect(()=>{
+        if(isLoading) {
+            toast.loading("Processing...", {id:toastId})
+        }
+        if(isSuccess){
+            toast.success(data?.message, {id: toastId})
+            if(data?.data){
+                setTimeout(() =>{
+                    window.location.href= data?.data
+                }, 1000)
+            }
+                
+        }
+        if(isError){
+            toast.error(JSON.stringify(error), {id:toastId})
+        }
+
+
+    },[isLoading, isSuccess, data, isError, error])
+
 
 
     return (
@@ -57,7 +104,7 @@ const ChecKout = () => {
            <div className="flex justify-evenly align-middle gap-16 ">
             {/* product details */}
             <div>
-                <CheckoutDetailsCard1></CheckoutDetailsCard1>
+                <CheckoutDetailsCard1 carDetails={productDetail}></CheckoutDetailsCard1>
             </div>
             {/* user details */}
             <div className="w-full">
@@ -71,7 +118,7 @@ const ChecKout = () => {
 
                 <div className="px-3 flex  justify-between font-semibold ">
                 <h1 className=" py-2  text-gray-400 font-semibold   ">Price</h1>
-                <h1 className="  py-2   ">{data?.data?.price}</h1>
+                <h1 className="  py-2   ">{carinfo?.price}</h1>
                 </div>
 
                 <div className="px-3 flex border-b-2 pb-2  justify-between font-semibold ">
@@ -87,7 +134,7 @@ const ChecKout = () => {
 
                 <div className="px-3 flex  justify-between font-semibold ">
                 <h1 className=" py-2  text-gray-400 font-semibold   ">Total Price</h1>
-                <h1 className="  py-2   ">{ totalprice === undefined ? data?.data?.price : totalprice }</h1>
+                <h1 className="  py-2   ">{ totalprice === undefined ? carinfo?.price : totalprice }</h1>
                 </div>
 
                 
@@ -96,13 +143,10 @@ const ChecKout = () => {
 
                 {/* button section */}
                 <Link className="w-full  " to="/checkout">
-                    <Button className= "md:w-full bg-[#f75d34] " >Pay for Buy</Button> 
+                    <Button 
+                     onClick={handleOrder} className=" visible md:w-full bg-[#f75d34] " >Pay for Buy</Button> 
                 </Link>
-                <div className="mt-5">
-                <Link className="w-full " to="/checkout">
-                    <Button disabled className= "md:w-full bg-[#f75d34] " >Order Now</Button> 
-                </Link>
-                </div>
+               
                
 
             </div>

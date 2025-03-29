@@ -3,6 +3,8 @@ import Header from "./Header";
 import Footer from "@/Shared/Footer";
 
 
+
+
 const Mainlayout = () => {
     return (
         <div className="h-full w-full">
@@ -10,6 +12,7 @@ const Mainlayout = () => {
                 <Header></Header>
                 <Outlet></Outlet>
                 <Footer></Footer>
+               
             </div>
         </div>
     );
