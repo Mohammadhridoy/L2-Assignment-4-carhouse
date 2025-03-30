@@ -22,12 +22,12 @@ const FeaturedProduct = () => {
 
     return (
         // key={data?._id}
-        <div className="py-14 ">
-            <h1 className="font-bold text-2xl flex justify-center align-middle py-10">Featured Product</h1>
-            
+        <div className="py-8 pb-20 bg-gray-100">
+            <h1 className="font-bold text-2xl flex justify-center align-middle py-5">Featured Product</h1>
+            <div>
             <Link className="w-full flex justify-end align-middle md:pr-10 pb-4 lg:pr-36  " to="/all-products">
             <Button className= " bg-[#f75d34]" >View All</Button> </Link>
-            
+            </div>
             <div className=" flex justify-center ">
             <Carousel className="w-full max-w-sm md:max-w-6xl shadow-lg">
 
