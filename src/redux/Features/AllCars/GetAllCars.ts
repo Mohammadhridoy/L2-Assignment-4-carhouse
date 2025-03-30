@@ -16,7 +16,7 @@ const getAllCarsapi = baseApi.injectEndpoints({
                    
                     args?.arg?.forEach((item:Titem)=>
                        {
-                        params.append( item?.name, item?.value as string )
+                        params.append( item?.name as string, item?.value as string )
                        }
                     )
                     

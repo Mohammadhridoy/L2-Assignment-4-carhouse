@@ -40,7 +40,7 @@ export type TResponseRedux<T> = TResponse<T> & BaseQueryApi
 export type Titem ={
     name: string | undefined,
     value: string | React.Key
-}[]
+}
 
 
 export type data = {

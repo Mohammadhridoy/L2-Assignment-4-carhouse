@@ -134,7 +134,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarMenu>
       </SidebarHeader>
       {/* sidebar content */}
-      <SidebarContent className="md:pl-10">
+      <SidebarContent className="">
         <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarRail className="md:hidden lg:visible" />

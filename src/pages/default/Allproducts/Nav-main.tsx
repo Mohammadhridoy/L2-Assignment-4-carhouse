@@ -5,9 +5,10 @@ import {
   SidebarMenu,
 } from "@/components/ui/sidebar"
 import useFetchData from "@/Utils/fetchData"
-
-
+import { Input } from "@/components/ui/input"
+import { useForm, SubmitHandler } from "react-hook-form"
 import {  useState } from "react"
+import { Titem } from "@/Utils/types"
 
 
 
@@ -22,6 +23,22 @@ export function NavMain({
     }[]
   }[]
 }) {
+  interface IFormInput {
+    search: string
+  }
+
+  const [params, setParams] = useState<Titem[]>([])
+  const { register, handleSubmit } = useForm<IFormInput>()
+  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    const param = {
+      name:"searchTerm",
+      value:data?.search
+    }
+    setParams([param])
+
+
+  }
+  console.log(params);
 
 
   const [filters, setFilters ] = useState<Record<string, string[]>>({})
@@ -32,7 +49,11 @@ export function NavMain({
 
  
 // fetch function 
-   useFetchData(queryParams)
+{
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions, react-hooks/rules-of-hooks
+  queryParams.length!== 0 ? useFetchData(queryParams) :  useFetchData(params)
+}
+   
   
 
 
@@ -62,21 +83,22 @@ const handleSelect = (category:string, value:string) =>{
 }
 
   return (
-
-
-
     <SidebarGroup>
       <SidebarMenu>
+         <form className=" lg:w-full"  onChange={handleSubmit(onSubmit)}>
+          <Input type="text"  {...register("search")}  placeholder="search brand, car name, or category" /> 
+          </form>
+
         {items.map((section) => (
 
-          <div key={section.title}>
-           <h1 className="text-xl py-3 font-bold">{section.title1 }</h1>
+          <div className="md:pl-10" key={section.title}>
+           <h1 className="text-xl py-2 font-bold">{section.title1 }</h1>
           {
             section.items &&(
               <div  className="">
                  {
                   section.items.map((item, itemIndex) =>(
-                    <div className="flex align-middle gap-3 cursor-pointer"  key={itemIndex}>
+                    <div className="flex align-middle gap-2 cursor-pointer"  key={itemIndex}>
 
                      
                       <input type="checkbox"

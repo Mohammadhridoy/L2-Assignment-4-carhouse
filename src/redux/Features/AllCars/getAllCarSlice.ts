@@ -7,18 +7,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type TgetCarData = {
     data:data| null,
-    isFetching:boolean | null, 
-    isLoading:boolean | null, 
-    isError:string | null,
     singleData: TSingleCar
 }
 
 
 const initialState :TgetCarData ={
     data:null,
-    isFetching: null, 
-    isLoading:null, 
-    isError:null,
     singleData: {} as TSingleCar
 
 }
@@ -30,11 +24,9 @@ const getAllCarSlice = createSlice({
     initialState,
     reducers:{
         setGetData:(state, action) =>{
-            const {data, isFetching, isLoading, isError} = action.payload
+            const {data } = action.payload
             state.data=data
-            state.isFetching = isFetching
-            state.isLoading = isLoading
-            state.isError = isError
+           
 
         },
         setSingleData: (state, action: PayloadAction<TSingleCar>) =>{
