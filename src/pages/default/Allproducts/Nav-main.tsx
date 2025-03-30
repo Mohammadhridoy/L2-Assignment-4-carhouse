@@ -38,7 +38,7 @@ export function NavMain({
 
 
   }
-  console.log(params);
+
 
 
   const [filters, setFilters ] = useState<Record<string, string[]>>({})
