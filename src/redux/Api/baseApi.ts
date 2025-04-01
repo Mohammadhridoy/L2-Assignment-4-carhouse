@@ -15,6 +15,7 @@ import { RootState } from '../store';
 export const baseApi = createApi({
     reducerPath: 'baseApi',
     baseQuery: baseQuery,
+    tagTypes: ['user'],
     endpoints: () =>({ })
 
 })

@@ -19,6 +19,12 @@ const userApi = baseApi.injectEndpoints({
                 method:'GET',
                 params:{ order_id}
             })
+        }),
+        getSingleUserOrder : builder.query({
+            query:(email) =>({
+                url:`/order/${email}`,
+                method:"GET"
+            })
         })
 
   
@@ -28,4 +34,4 @@ const userApi = baseApi.injectEndpoints({
 })
 
 
-export const {useSetOrderMutation, useVerifyOrderQuery} = userApi
+export const {useSetOrderMutation, useVerifyOrderQuery,useGetSingleUserOrderQuery} = userApi

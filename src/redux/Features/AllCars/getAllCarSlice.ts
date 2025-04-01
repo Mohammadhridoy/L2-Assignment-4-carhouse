@@ -7,13 +7,15 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type TgetCarData = {
     data:data| null,
-    singleData: TSingleCar
+    singleData: TSingleCar,
+ 
 }
 
 
 const initialState :TgetCarData ={
     data:null,
-    singleData: {} as TSingleCar
+    singleData: {} as TSingleCar,
+
 
 }
 
@@ -31,18 +33,20 @@ const getAllCarSlice = createSlice({
         },
         setSingleData: (state, action: PayloadAction<TSingleCar>) =>{
                 state.singleData = action.payload
-        }
+        },
+       
    
         
     }
 })
 
 
-export const {setGetData, setSingleData} = getAllCarSlice.actions
+export const {setGetData, setSingleData, } = getAllCarSlice.actions
 export default getAllCarSlice.reducer
 
 export const useGetAlldata = (state: RootState) => state.getAlldata
 export const useSingledata = (state: RootState) => state.getAlldata.singleData
+
 
 
 

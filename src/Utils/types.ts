@@ -79,4 +79,31 @@ export type TSingleCar ={
 
 }
 
+type Ttransaction = {
+    id: string
+    transactionStatus: string
+    bank_status: string
+    date_time: string
+    method: string
+    sp_code: string
+}
+
+export type Torder = {
+    _id: string
+    email: string
+    carId: string
+    quantity: number
+    totalPrice: number
+    status: string
+    transaction:Ttransaction 
+}
+
+export type Tuser ={
+    _id: string
+    name: string
+    email: string
+    role: string
+    isBlocked: boolean
+    needPasswordChange: boolean
+}
 

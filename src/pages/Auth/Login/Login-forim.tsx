@@ -28,14 +28,7 @@ export function LoginForm({
   const dispatch = useAppDispatch()
 const [login ] = useLoginMutation()
 
-  const { register, handleSubmit } = useForm<IFormInput>(
-    {
-      defaultValues:{
-        "email":"hrd@gmail.com",
-        "password":"1255ee3"
-    }
-    }
-  )
+  const { register, handleSubmit } = useForm<IFormInput>( )
 
 
 

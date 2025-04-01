@@ -8,7 +8,8 @@ const userApi = baseApi.injectEndpoints({
             query: () =>({
                 url:"/auth/user",
                 method: 'GET'
-            })
+            }),
+            providesTags:['user']
         }),
 
         getSingleUser: builder.query({
@@ -17,7 +18,24 @@ const userApi = baseApi.injectEndpoints({
                 method:'GET'
             
             }) 
+        }),
+        changePassword: builder.mutation({
+            query:(passwordObject ) =>({
+                url:'/auth/user/changepassword',
+                method:'POST',
+                body: passwordObject
+            })
+        }),
+        isBlocked: builder.mutation({
+            query:(userId)=>({
+                url:'/auth/user/blocked' ,
+                method:'POST',
+                body: userId
+            }),
+            invalidatesTags:['user']
+
         })
+
     }),
     
 
@@ -25,5 +43,5 @@ const userApi = baseApi.injectEndpoints({
 
 
 
-export const {useGetAllUsersQuery, useGetSingleUserQuery} = userApi
+export const {useGetAllUsersQuery, useGetSingleUserQuery, useChangePasswordMutation, useIsBlockedMutation} = userApi
 
