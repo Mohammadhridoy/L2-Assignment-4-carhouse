@@ -35,9 +35,8 @@ console.log(block);
         if(isSuccess){
             toast.success('User is blocked!')
         }else if(isError){
-            toast.error('Something is wrong')
+            toast.error('Something is wrong!')
         }
-
 
     }
 

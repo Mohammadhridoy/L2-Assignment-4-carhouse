@@ -1,6 +1,6 @@
 import Mainlayout from "@/component/Mainlayout";
 import UserLayout from "@/component/UserLayout";
-import Orders from "@/pages/admin/Orders";
+import Orders from "@/pages/admin/Orders/Orders";
 import Products from "@/pages/admin/Products";
 import Users from "@/pages/admin/Users";
 import Login from "@/pages/Auth/Login/Login";
