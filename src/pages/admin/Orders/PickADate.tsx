@@ -37,10 +37,11 @@ import { useUpdateDateMutation } from "@/redux/Api/orderApi"
 import { toast } from "sonner"
 
     type Torder= {
-        orderId:string
+        orderId:string,
+        orderStatus: string
     }
 
-const PickADate = ({orderId}:Torder ) => {
+const PickADate = ({orderId, orderStatus}:Torder ) => {
         const [updateDate] = useUpdateDateMutation()
         const FormSchema = z.object({
             dob: z.date({
@@ -83,7 +84,8 @@ const PickADate = ({orderId}:Torder ) => {
         <DialogTrigger asChild>
           <Button variant="outline">Set Date</Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-md">
+        {
+          orderStatus !=="Pending" ? <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle className="text-center">Give estimated delivery date</DialogTitle>
             <DialogDescription>
@@ -92,7 +94,7 @@ const PickADate = ({orderId}:Torder ) => {
           </DialogHeader>
           <div className="flex justify-center items-center space-x-2">
             {/* date pic  */}
-            <Form {...form}>
+            <Form {...form}  >
                             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                                 <FormField
                                 control={form.control}
@@ -147,7 +149,8 @@ const PickADate = ({orderId}:Torder ) => {
           <DialogFooter className="sm:justify-start">
           
           </DialogFooter>
-        </DialogContent>
+        </DialogContent>:" "
+        }
       </Dialog>
     );
 };

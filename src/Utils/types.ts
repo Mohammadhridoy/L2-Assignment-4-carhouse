@@ -95,7 +95,11 @@ export type Torder = {
     quantity: number
     totalPrice: number
     status: string
-    transaction:Ttransaction 
+    transaction:Ttransaction,
+    orderStatus:string
+    deliveryDate:string
+
+ 
 }
 
 export type Tuser ={

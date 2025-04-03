@@ -15,6 +15,8 @@ const TrackOrder = () => {
     const statusSteps = ["Pending", "Processing", "Shipped", "Delivered"]
     const currentStepIndex = statusSteps.indexOf(status)
 
+    
+
 return (
         <div>
             <h1 className="font-bold text-2xl  py-8 flex justify-center align-middle">Track Order Status</h1>
@@ -28,17 +30,20 @@ return (
                       {/*Steps */}
                     <div className="flex justify-between w-full max-w-lg">
                         {statusSteps.map((step, index)=>(
+                        
                             <div key={index}>
                                 <div  className="relative flex flex-col items-center ">
                                
-                                { index!==0 &&(
+                                {  index!==0 &&(
+                                    index !==3 && (
                                     <motion.div 
                                     className="absolute top-5 w-full h-1 bg-gray-300"
                                     initial={{width:"0%"}}
-                                    animate={{width: index <=currentStepIndex?"170%":"0%",
+                                    animate={{width: index <=currentStepIndex? "168%":"0%",
                                         backgroundColor: index<=currentStepIndex? "rgb(34 197 94)": "rgb(209 213 219)" }}
 
                                     transition={{duration:1, ease:"easeInOut"}} />
+                                )
                                 )
 
                                 }

@@ -36,7 +36,7 @@ const SelectStatus = ({orderStatus, orderId}:TorderStatus) => {
 
   
 
-  const [updateOrderStatus] = useUpdateOrderStatusMutation()
+  const [updateOrderStatus, {isError, isSuccess}] = useUpdateOrderStatusMutation()
 
   const { control, handleSubmit } = useForm<IFormInput>();
   const onSubmit = async( data:IFormInput )=> {
@@ -49,14 +49,20 @@ const SelectStatus = ({orderStatus, orderId}:TorderStatus) => {
     } 
 
      updateOrderStatus(updateOrder)
-
-     toast.success("Order Status change..!", {duration:1000})
+    if(isSuccess){ 
+     toast.success("Order Status change..!", {duration:2000})
+    }
+   
 
   }catch(err){
-    toast.error(`Something is wrong! ${err}`, {duration:1000})
+    toast.error(`Something is wrong! ${err}`, {duration:5000})
+  }
+  if(isError){
+    toast.error(`Something is wrong!`, {duration: 2000})
   }
 
   }
+ 
 
 
  

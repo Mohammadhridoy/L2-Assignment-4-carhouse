@@ -40,7 +40,7 @@ const Orders = () => {
                 <TableHead className="w-[100px]">Order_ID </TableHead>
                
                 <TableHead className="text-center">Quantity</TableHead>
-                <TableHead className="text-center">Method</TableHead>
+                <TableHead className="text-center">Order_Status</TableHead>
                 <TableHead className="text-center">Payment_Status</TableHead>
                 <TableHead className="text-center">Order_Date</TableHead>
                 <TableHead className="text-center">Order_status</TableHead>
@@ -54,7 +54,7 @@ const Orders = () => {
                 <TableRow className="" key={order._id}>
                     <TableCell className="font-medium">{order?.transaction.id}</TableCell>
                     <TableCell className="text-center">{order?.quantity}</TableCell>
-                    <TableCell className="text-center">{order?.transaction?.method}</TableCell>
+                    <TableCell className="text-center">{order?.orderStatus}</TableCell>
                     <TableCell className="text-center">{order?.status}</TableCell>
                     <TableCell className="text-center">{new Date(order?.transaction?.date_time).toLocaleDateString()}</TableCell>
                     <TableCell className="text-center ">
@@ -64,7 +64,7 @@ const Orders = () => {
                     </TableCell>
                     <TableCell className="text-center"> 
                         {/* delivery date */}
-                        <PickADate orderId={order?._id}></PickADate>
+                        <PickADate orderId={order?._id} orderStatus={order?.status}  ></PickADate>
 
                     </TableCell>
                     <TableCell className="text-center">{order?.totalPrice }</TableCell>

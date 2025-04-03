@@ -4,7 +4,8 @@ import {
   CalendarArrowDown,
   UserRound,
   Car,
-  View
+  View,
+  Logs
 } from "lucide-react"
 
 import { NavMain } from "../Dashboard/Dashboard-nav"
@@ -18,6 +19,7 @@ import {
 } from "@/components/ui/sidebar"
 import { useAppSelector } from "@/redux/hooks"
 import { uesCurrentUser } from "@/redux/Features/auth/authSlice"
+
 
 
 
@@ -42,6 +44,11 @@ const data = {
           url: "/dashboard/user/vieworder",
           icon:  View,
           isActive: false,
+        },{
+          title:"Order Tracking",
+          url:"/dashboard/user/ordertracking",
+          icon: Logs,
+          isAction: false
         }
 
       ],
