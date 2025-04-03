@@ -20,7 +20,7 @@ import { toast } from "sonner";
 const Users = () => {
 
     const{ data, isLoading } = useGetAllUsersQuery(undefined)
-    console.log(data);
+    
 
     const[isBlocked, { isSuccess, isError} ] = useIsBlockedMutation()
 
@@ -29,7 +29,7 @@ const Users = () => {
         const block = {
             userId:data
         }
-console.log(block);
+
         isBlocked(block)
 
         if(isSuccess){

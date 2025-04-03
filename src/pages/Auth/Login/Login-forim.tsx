@@ -28,7 +28,7 @@ export function LoginForm({
   const dispatch = useAppDispatch()
 const [login ] = useLoginMutation()
 
-  const { register, handleSubmit } = useForm<IFormInput>( )
+  const { register, handleSubmit } = useForm<IFormInput>()
 
 
 

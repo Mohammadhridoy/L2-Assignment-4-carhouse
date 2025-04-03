@@ -76,7 +76,7 @@ const ChecKout = () => {
     const toastId = 1
     useEffect(()=>{
         if(isLoading) {
-            toast.loading("Processing...", {id:toastId})
+            toast.loading("Processing...", {id:toastId, duration:1000})
         }
         if(isSuccess){
             toast.success(data?.message, {id: toastId})

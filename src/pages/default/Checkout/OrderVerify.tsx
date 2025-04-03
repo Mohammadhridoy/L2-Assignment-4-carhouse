@@ -10,10 +10,10 @@ import Loading from "@/Utils/Loading";
 
 const OrderVerify = () => {
     const [searchParams] = useSearchParams()
-    console.log();
+  
 
     const {isLoading, data} = useVerifyOrderQuery(searchParams.get("order_id"),{refetchOnMountOrArgChange:true})
-    console.log(data?.data?.[0]);
+    
     const orderedInfo = data?.data?.[0]
 
 
