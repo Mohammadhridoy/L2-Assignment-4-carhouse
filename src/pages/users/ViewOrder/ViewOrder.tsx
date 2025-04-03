@@ -1,4 +1,5 @@
 
+import { Button } from "@/components/ui/button";
 import {
     Table,
     TableBody,
@@ -14,6 +15,7 @@ import { uesCurrentUser } from "@/redux/Features/auth/authSlice";
 import {  useAppSelector } from "@/redux/hooks";
 import Loading from "@/Utils/Loading";
 import { Torder } from "@/Utils/types";
+import { Link } from "react-router-dom";
 
 
 
@@ -22,10 +24,6 @@ const ViewOrder = () => {
 
     const{ data, isLoading } = useGetSingleUserOrderQuery(user?.email)
     
-    
-
-    
-
 
     return (
         isLoading? <Loading></Loading>:
@@ -41,6 +39,7 @@ const ViewOrder = () => {
                 <TableHead className="text-center">Payment_Status</TableHead>
                 <TableHead className="text-center">Order_Date</TableHead>
                 <TableHead className="text-center">Amount</TableHead>
+                <TableHead className="text-center">Action</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
@@ -53,6 +52,12 @@ const ViewOrder = () => {
                     <TableCell className="text-center">{new Date(order?.transaction?.date_time).toLocaleDateString()}</TableCell>
 
                     <TableCell className="text-center">{order?.totalPrice }</TableCell>
+                    <TableCell className="text-center">
+                        <Link to="/dashboard/user/trackorder" state={order?._id} >
+                    < Button   type="submit"  variant={"destructive"} className="text-center mr-3 ">Track Order</Button>
+                   
+                    </Link>
+                    </TableCell>
                 
                     
                 </TableRow>

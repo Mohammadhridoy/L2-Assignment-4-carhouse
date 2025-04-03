@@ -41,7 +41,22 @@ const userApi = baseApi.injectEndpoints({
                 body: updateOrder
             }),
             invalidatesTags:['order']
-        })
+        }),
+        updateDate:builder.mutation({
+            query:(updateDate)=>({
+                url:"/orders/updatedate",
+                method:'PUT',
+                body:updateDate
+            }),
+            invalidatesTags:['order']
+        }),
+        singleOrder:builder.query({
+            query:(id)=>({
+                url:`/orders/${id}`,
+                method:'GET',
+            }),
+            
+        }),
 
   
     }),
@@ -50,4 +65,5 @@ const userApi = baseApi.injectEndpoints({
 })
 
 
-export const {useSetOrderMutation, useVerifyOrderQuery,useGetSingleUserOrderQuery, useGetAllOrdersQuery, useUpdateOrderStatusMutation} = userApi
+export const {useSetOrderMutation, useVerifyOrderQuery,useGetSingleUserOrderQuery, useGetAllOrdersQuery,
+     useUpdateOrderStatusMutation, useUpdateDateMutation, useSingleOrderQuery} = userApi

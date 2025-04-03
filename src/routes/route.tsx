@@ -14,6 +14,7 @@ import ChecKout from "@/pages/default/Checkout/ChecKout";
 import OrderVerify from "@/pages/default/Checkout/OrderVerify";
 import Home from "@/pages/default/Home";
 import Productsdetails from "@/pages/default/Productsdetails";
+import TrackOrder from "@/pages/users/TrackOrder";
 import UserProfile from "@/pages/users/UserProfile";
 import ViewOrder from "@/pages/users/ViewOrder/ViewOrder";
 import ProtectedRoute from "@/Utils/ProtectedRoute";
@@ -90,6 +91,10 @@ const router = createBrowserRouter([
             {
                 path:"/dashboard/admin/orders",
                 element:<Orders></Orders>
+            },
+            {
+                path:"/dashboard/user/trackorder",
+                element:<TrackOrder></TrackOrder>
             }
             
         ]

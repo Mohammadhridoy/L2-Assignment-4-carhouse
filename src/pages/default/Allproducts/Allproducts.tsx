@@ -21,14 +21,6 @@ function Allproducts() {
 const {data}= useAppSelector(useGetAlldata)
 const carAllData= data?.data 
 
-
-
-
-
-
-       
-     
-
   return (
  
     <SidebarProvider>

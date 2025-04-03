@@ -50,7 +50,7 @@ const SelectStatus = ({orderStatus, orderId}:TorderStatus) => {
 
      updateOrderStatus(updateOrder)
 
-     toast.success("Status change..!", {duration:1000})
+     toast.success("Order Status change..!", {duration:1000})
 
   }catch(err){
     toast.error(`Something is wrong! ${err}`, {duration:1000})

@@ -33,13 +33,15 @@ import {
     import { useForm } from "react-hook-form"
     import { z } from "zod"
     import { zodResolver } from "@hookform/resolvers/zod"
+import { useUpdateDateMutation } from "@/redux/Api/orderApi"
+import { toast } from "sonner"
 
     type Torder= {
         orderId:string
     }
 
 const PickADate = ({orderId}:Torder ) => {
-
+        const [updateDate] = useUpdateDateMutation()
         const FormSchema = z.object({
             dob: z.date({
               required_error: "A date of birth is required.",
@@ -52,11 +54,24 @@ const PickADate = ({orderId}:Torder ) => {
           
         
            
-            function onSubmit(data: z.infer<typeof FormSchema>) {
+           const  onSubmit = async (data: z.infer<typeof FormSchema>) => {
               
               const date =data.dob
-              console.log(new Date(date))
-              console.log(orderId);
+              console.log(date);
+
+              try{
+
+                const updateInfo = {
+                  orderId: orderId,
+                  date: date
+                  }
+
+                updateDate(updateInfo )
+                toast.success('Deliver Date update successfully!')
+
+              }catch(err){
+                toast.error(`Something is wrong! ${err}`, {duration:1000})
+              }
                   
                 
              

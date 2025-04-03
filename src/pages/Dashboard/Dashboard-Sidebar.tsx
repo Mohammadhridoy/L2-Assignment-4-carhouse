@@ -42,7 +42,7 @@ const data = {
           url: "/dashboard/user/vieworder",
           icon:  View,
           isActive: false,
-        },
+        }
 
       ],
       admin: [ 
