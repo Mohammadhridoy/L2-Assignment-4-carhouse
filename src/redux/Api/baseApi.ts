@@ -26,7 +26,7 @@ import { logout, setUser } from '../Features/auth/authSlice';
 
             const data = await res.json()
             
-
+            console.log("Refresh token resonse:", data);
             if(data?.data?.accessToken){
                 const user = (api.getState() as RootState).auth.user
                 api.dispatch(
@@ -38,10 +38,13 @@ import { logout, setUser } from '../Features/auth/authSlice';
     
                 result = await baseQuery(args, api, extraOptions)
 
-            }else{
-                console.log("ddd");
+            }
+            if(!data?.data?.accessToken){
                 api.dispatch(logout())
             }
+                
+                
+            
          
 
         }

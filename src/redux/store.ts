@@ -9,12 +9,15 @@ import storage from 'redux-persist/lib/storage'
 
 const persistConfig = {
   key: 'auth',
-  id:'singledata',
   storage,
+}
+const persistCarConfig={
+  key:'singledata',
+  storage
 }
 
 const persistedAuthReducer = persistReducer(persistConfig, authReducer)
-const persistedSingleData = persistReducer(persistConfig, getAlldataReducer)
+const persistedSingleData = persistReducer(persistCarConfig, getAlldataReducer)
 
 export const store = configureStore({
   reducer: {

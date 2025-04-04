@@ -112,7 +112,7 @@ const OrderVerify = () => {
                 <div className="pl-6">
 
                     {
-                        orderedInfo?.bank_status? <div className="flex align-middle gap-3">
+                        orderedInfo?.bank_status==="Success"? <div className="flex align-middle gap-3">
                         <BadgeCheck color="#18aa3d" />
                         <h1 className="font-semibold">Verified</h1>
                         </div> : <div className="flex align-middle gap-3">
