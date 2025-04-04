@@ -34,20 +34,14 @@ const FeaturedProduct = () => {
             <CarouselContent className="-ml-1 ">
                 {data?.data?.slice(0, 6)?.map((data:TCar) => (
                 <CarouselItem key={data?._id} className="pl-1 md:basis-1/2 lg:basis-1/3">
-                    {/* <div className="p-1">
-                    <Card>
-                        <CardContent className="flex aspect-square items-center justify-center p-6">
-                        <span className="text-2xl font-semibold">ddd</span>
-                        </CardContent>
-                    </Card>
-                    </div> */}
+                  
                     <Cardinfo data={data}></Cardinfo>
                 </CarouselItem>
                 
                 ))}
             </CarouselContent>
-            <CarouselPrevious className="shadow-md" />
-            <CarouselNext />
+            <CarouselPrevious className=" invisible lg:visible  shadow-md" />
+            <CarouselNext className=" invisible lg:visible  shadow-md"  />
             </Carousel>
             </div>
             

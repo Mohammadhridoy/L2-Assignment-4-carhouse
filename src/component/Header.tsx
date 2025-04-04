@@ -29,12 +29,12 @@ const Header = () => {
     }
 
     return (
-    <div className=" bg-[#f6f6f9]  mx-auto z-10  lg:py-4 md:sticky top-0   px-6 md:px-8 lg:px-12 lg:w-full lg:flex">
+    <div className=" bg-[#f6f6f9] w-full  mx-auto z-10  md:sticky top-0  px-6  md:flex py-4    md:px-4 lg:px-12 lg:w-full lg:flex  lg:py-4">
         <div className=" w-1/3 "> 
             <img className="w-32" src={logo} alt="" />
         </div>
 
-        <div className="w-1/3 lg:flex justify-center"> 
+        <div className="md:w-1/3  md:flex justify-center"> 
         <NavigationMenu>
       <NavigationMenuList >
         <NavigationMenuItem >

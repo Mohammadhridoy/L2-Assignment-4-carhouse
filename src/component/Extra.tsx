@@ -37,13 +37,13 @@ const Extra = () => {
 
 
     return (
-        <div className="px-14 py-10 flex align-middle gap-36" >
+        <div className="  flex  flex-wrap align-middle lg:px-14 py-10  flex-row lg:gap-36" >
            {
             extra?.map((item)=>
                 <div className="flex  justify-start align-middle gap-5" key={item?.title}>
-                    <div className="text-6xl font-bold">{item?.icon}</div>
+                    <div className="text-4xl lg:text-6xl font-bold">{item?.icon}</div>
                 <div>
-                    <h1 className="text-2xl font-bold ">{item?.title}</h1>
+                    <h1 className="text-xl lg:text-2xl font-bold ">{item?.title}</h1>
                     <h4>{item?.description}</h4>
                 </div>
                 </div>

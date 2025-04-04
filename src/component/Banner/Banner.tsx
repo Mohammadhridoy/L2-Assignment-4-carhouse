@@ -12,13 +12,13 @@ const Banner = () => {
   >
     {/* image section*/}
 
-<div className="relative h-[546px] ">
+<div className="relative h-[300px] md:h-[546px] ">
     <img  className="bg-auto h-full" src={carImage}  ></img>
     
 
-<div className="px-6 md:px-8 lg:px-12 ">
+<div className=" hidden px-6 md:px-8 lg:px-12 lg:block ">
 
-<LoginForm  className='w-[24%] absolute top-12 left-28'/>
+<LoginForm  className='  lg:w-[24%]  lg:absolute top-12 left-28'/>
 
 </div>
 </div> 
