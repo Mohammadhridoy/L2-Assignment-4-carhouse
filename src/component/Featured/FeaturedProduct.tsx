@@ -18,7 +18,7 @@ const FeaturedProduct = () => {
   
 
     const {data} = useGetAllCarsQuery(undefined)
-    console.log("dd", data?.data);
+    
 
     return (
         // key={data?._id}
